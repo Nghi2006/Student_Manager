@@ -26,7 +26,6 @@ public class StudentManager {
             System.out.println("\n--- Entering details for student " + i + " ---");
             Student student = new Student();
 
-            // Xử lý lỗi trùng ID
             while (true) {
                 System.out.print("ID: ");
                 String id = sc.nextLine().trim();
@@ -45,7 +44,6 @@ public class StudentManager {
             System.out.print("Name: ");
             student.setName(sc.nextLine());
 
-            // Giữ nguyên logic try-catch marks của bạn vì nó đã tốt
             while (true) {
                 System.out.print("Marks (0-10): ");
                 try {
@@ -135,13 +133,12 @@ public class StudentManager {
         System.out.print("Enter ID to delete: ");
         String id = sc.nextLine().trim();
 
-        // KIỂM TRA TRƯỚC KHI THỰC HIỆN (Operational Error check)
+        // (Operational Error check)
         if (!map.containsKey(id)) {
             System.out.println("Delete Failed: Cannot find student with ID '" + id + "'. Operation aborted.");
             return;
         }
 
-        // Nếu tồn tại mới thực hiện xóa
         map.remove(id);
         list.removeIf(st -> st.getId().equalsIgnoreCase(id));
         System.out.println("Success: Student '" + id + "' has been removed.");
